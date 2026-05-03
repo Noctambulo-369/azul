@@ -69,6 +69,22 @@ body{position:fixed;inset:0;}
 #bigMsg{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);font-family:'Fredoka One','Comic Sans MS',cursive;text-align:center;pointer-events:none;z-index:30;opacity:0;text-shadow:0 4px 20px rgba(0,0,0,0.7);transition:opacity 0.15s;white-space:nowrap;}
 
 #saveIndicator{position:absolute;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.35);font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:1px;opacity:0;transition:opacity 0.4s;white-space:nowrap;}
+
+.shop-intro{font-family:'Nunito',sans-serif;font-weight:900;color:rgba(255,255,255,0.72);font-size:12px;line-height:1.25;background:rgba(255,226,52,0.08);border:1px solid rgba(255,226,52,0.18);border-radius:12px;padding:9px 10px;}
+.shop-intro strong{color:#FFE234;}
+.skin-option{position:relative;min-height:44px;}
+.skin-option.locked{opacity:.92;border-color:rgba(255,226,52,.18);background:rgba(255,255,255,.04);}
+.skin-option.locked .skin-icon{filter:grayscale(.25);}
+.skin-copy{display:flex;flex-direction:column;line-height:1.05;min-width:0;}
+.skin-name{font-size:1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.skin-meta{font-size:.74em;color:rgba(255,255,255,.52);margin-top:3px;white-space:nowrap;}
+.price-badge{margin-left:auto;flex-shrink:0;font-size:.78em;color:#FFE234;background:rgba(0,0,0,.42);border:1px solid rgba(255,226,52,.32);border-radius:999px;padding:3px 6px;}
+.skin-option.active .price-badge{color:#111;background:#FFE234;border-color:#FFE234;}
+.color-swatch.locked::before{content:'🔒';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;background:rgba(0,0,0,.45);border-radius:50%;}
+.color-swatch.active::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;text-shadow:0 1px 3px rgba(0,0,0,0.8);}
+.toast-economy{position:absolute;left:50%;transform:translateX(-50%);bottom:112px;z-index:50;font-family:'Fredoka One',cursive;color:#FFE234;background:rgba(0,0,0,.68);border:1px solid rgba(255,226,52,.35);border-radius:999px;padding:8px 14px;opacity:0;pointer-events:none;transition:opacity .25s, transform .25s;text-shadow:0 2px 6px rgba(0,0,0,.6);}
+.toast-economy.show{opacity:1;transform:translateX(-50%) translateY(-8px);}
+
 </style>
 </head>
 <body>
@@ -93,22 +109,23 @@ body{position:fixed;inset:0;}
   <button class="sym-btn" id="btnGt"><span>&gt;</span></button>
 </div>
 
-<button id="custBtn">🎨 LOOK</button>
+<button id="custBtn">🛒 TIENDA</button>
 
 <div id="custPanel">
-  <h3>✨ Personalizar</h3>
+  <h3>🛒 Tienda del Cocodrilo</h3>
   <button id="closePanel">✕ Cerrar</button>
   <div class="cust-section">
-    <span class="cust-label" id="lblSkins">Skin</span>
+    <span class="cust-label" id="lblSkins">Skins desbloqueables</span>
     <div class="skin-grid" id="skinGrid"></div>
   </div>
   <div class="cust-section">
-    <span class="cust-label">Color del cuerpo</span>
+    <span class="cust-label">Colores del cuerpo</span>
     <div class="color-grid" id="colorGrid"></div>
   </div>
 </div>
 
 <div id="saveIndicator">💾 Guardado</div>
+<div id="shopToast" class="toast-economy"></div>
 
 <script>
 // ══════════════════════════════════════════
@@ -250,24 +267,25 @@ const WORLDS = [
 ];
 
 const SKINS = [
-  { name:'Normal', hat:null,   eyeColor:'#FFD700' },
-  { name:'Pirata', hat:'🏴‍☠️',  eyeColor:'#ff4444' },
-  { name:'Ninja',  hat:'🥷',   eyeColor:'#ff00cc' },
-  { name:'Robot',  hat:'🤖',   eyeColor:'#00ffee' },
-  { name:'Rey',    hat:'👑',   eyeColor:'#ffffff' },
+  { name:'Normal', hat:null,   eyeColor:'#FFD700', price:0,  rarity:'Inicial' },
+  { name:'Pirata', hat:'🏴‍☠️',  eyeColor:'#ff4444', price:10, rarity:'Aventura' },
+  { name:'Ninja',  hat:'🥷',   eyeColor:'#ff00cc', price:18, rarity:'Épico' },
+  { name:'Robot',  hat:'🤖',   eyeColor:'#00ffee', price:25, rarity:'Raro' },
+  { name:'Rey',    hat:'👑',   eyeColor:'#ffffff', price:40, rarity:'Legendario' },
 ];
 
 const COLORS = [
-  { id:'green',   body:'#23a455', belly:'#4dcc7a', outline:'#087c36', label:'Verde'    },
-  { id:'blue',    body:'#2a6aaa', belly:'#4a9ade', outline:'#0a3a7a', label:'Azul'     },
-  { id:'purple',  body:'#7a3aaa', belly:'#aa6adc', outline:'#4a1a7a', label:'Morado'   },
-  { id:'red',     body:'#aa2a2a', belly:'#dd5a5a', outline:'#6a0a0a', label:'Rojo'     },
-  { id:'orange',  body:'#cc6a10', belly:'#ffaa44', outline:'#8a3a00', label:'Naranja'  },
-  { id:'pink',    body:'#c94880', belly:'#ff80b0', outline:'#7a1a4a', label:'Rosa'     },
-  { id:'teal',    body:'#1a8a7a', belly:'#44ccbb', outline:'#0a4a42', label:'Turquesa' },
-  { id:'gold',    body:'#8a6a00', belly:'#ccaa00', outline:'#5a3a00', label:'Dorado'   },
-  { id:'dark',    body:'#1a1a1a', belly:'#333333', outline:'#000000', label:'Negro'    },
-  { id:'lime',    body:'#5aaa10', belly:'#99dd44', outline:'#2a6a00', label:'Lima'     },
+  { id:'green',   body:'#23a455', belly:'#4dcc7a', outline:'#087c36', label:'Verde',    price:0  },
+  { id:'white',   body:'#f5f5f5', belly:'#ffffff', outline:'#999999', label:'Blanco',   price:8  },
+  { id:'blue',    body:'#2a6aaa', belly:'#4a9ade', outline:'#0a3a7a', label:'Azul',     price:6  },
+  { id:'purple',  body:'#7a3aaa', belly:'#aa6adc', outline:'#4a1a7a', label:'Morado',   price:10 },
+  { id:'red',     body:'#aa2a2a', belly:'#dd5a5a', outline:'#6a0a0a', label:'Rojo',     price:10 },
+  { id:'orange',  body:'#cc6a10', belly:'#ffaa44', outline:'#8a3a00', label:'Naranja',  price:12 },
+  { id:'pink',    body:'#c94880', belly:'#ff80b0', outline:'#7a1a4a', label:'Rosa',     price:12 },
+  { id:'teal',    body:'#1a8a7a', belly:'#44ccbb', outline:'#0a4a42', label:'Turquesa', price:15 },
+  { id:'gold',    body:'#8a6a00', belly:'#ccaa00', outline:'#5a3a00', label:'Dorado',   price:30 },
+  { id:'dark',    body:'#1a1a1a', belly:'#333333', outline:'#000000', label:'Negro',    price:20 },
+  { id:'lime',    body:'#5aaa10', belly:'#99dd44', outline:'#2a6a00', label:'Lima',     price:14 },
 ];
 
 // ══════════════════════════════════════════
@@ -282,7 +300,8 @@ function saveGame(){
       level:G.level, worldIdx:G.worldIdx,
       skinIdx:G.skinIdx, colorId:G.colorId,
       streak:G.streak, roundInLevel:G.roundInLevel,
-      totalCorrect:G.totalCorrect
+      totalCorrect:G.totalCorrect,
+      unlockedSkins:G.unlockedSkins, unlockedColors:G.unlockedColors
     }));
   }catch(e){}
   flashSave();
@@ -301,6 +320,10 @@ function loadGame(){
     G.streak   = d.streak   || 0;
     G.roundInLevel = d.roundInLevel || 0;
     G.totalCorrect = d.totalCorrect || 0;
+    G.unlockedSkins = Array.isArray(d.unlockedSkins) ? d.unlockedSkins : [0];
+    G.unlockedColors = Array.isArray(d.unlockedColors) ? d.unlockedColors : ['green'];
+    if(!G.unlockedSkins.includes(G.skinIdx)) G.skinIdx = 0;
+    if(!G.unlockedColors.includes(G.colorId)) G.colorId = 'green';
   }catch(e){}
 }
 
@@ -328,6 +351,7 @@ let G = {
   leftItems:[], rightItems:[], itemSpawnT:0,
   particles:[], coins3D:[], sparkles:[], ripples:[],
   bubbles:[], t:0,
+  unlockedSkins:[0], unlockedColors:['green'],
 };
 
 for(let i=0;i<18;i++) G.bubbles.push({
@@ -427,10 +451,13 @@ function answer(sym){
       document.getElementById('levelLabel').textContent='NIVEL '+G.level;
     }
   } else {
-    G.streak=0;G.combo=1;soundFail();G.mouthTarget=0;
+    G.streak=0;G.combo=1;
+    G.coins = Math.max(0, G.coins - 2);
+    soundFail();G.mouthTarget=0;
     G.crocTargetX=sym==='>'?0.06:0.94;
     spawnParticles(W*0.5,H*0.68,false);
-    showBigMsg(`💨 Era  ${correctSym()}  ¡Escapó!`,'#ff6b6b');
+    showBigMsg(`💨 -2 monedas · Era ${correctSym()}`,'#ff6b6b');
+    showShopToast('🪙 Penalización: -2 monedas');
   }
   G.round++; updateHUD(); G.phase='feedback'; G.feedbackTimer=0;
   saveGame();
@@ -723,36 +750,78 @@ function loop(ts){
   requestAnimationFrame(loop);
 }
 
+
+function showShopToast(txt){
+  const el=document.getElementById('shopToast');
+  if(!el) return;
+  el.textContent=txt;
+  el.classList.add('show');
+  clearTimeout(showShopToast.tmr);
+  showShopToast.tmr=setTimeout(()=>el.classList.remove('show'),1300);
+}
+function canAfford(price){ return G.coins >= price; }
+function unlockSkin(idx){
+  const sk=SKINS[idx];
+  if(G.unlockedSkins.includes(idx)){ G.skinIdx=idx; showShopToast(`🐊 Skin equipado: ${sk.name}`); return true; }
+  if(!canAfford(sk.price)){ showShopToast(`🔒 Necesitas ${sk.price-G.coins} monedas más`); soundFail(); return false; }
+  G.coins-=sk.price; G.unlockedSkins.push(idx); G.skinIdx=idx;
+  soundCoin(); updateHUD(); saveGame(); spawnParticles(W*0.5,H*0.5,true);
+  showShopToast(`✅ Desbloqueado: ${sk.name}`);
+  return true;
+}
+function unlockColor(id){
+  const c=COLORS.find(x=>x.id===id); if(!c) return false;
+  if(G.unlockedColors.includes(id)){ G.colorId=id; showShopToast(`🎨 Color equipado: ${c.label}`); return true; }
+  if(!canAfford(c.price)){ showShopToast(`🔒 Necesitas ${c.price-G.coins} monedas más`); soundFail(); return false; }
+  G.coins-=c.price; G.unlockedColors.push(id); G.colorId=id;
+  soundCoin(); updateHUD(); saveGame(); spawnParticles(W*0.5,H*0.5,true);
+  showShopToast(`✅ Color desbloqueado: ${c.label}`);
+  return true;
+}
+
 // ══════════════════════════════════════════
 //  CUSTOMIZER UI
 // ══════════════════════════════════════════
 function buildCustPanel(){
+  const panel=document.getElementById('custPanel');
+  let intro=panel.querySelector('.shop-intro');
+  if(!intro){
+    intro=document.createElement('div');
+    intro.className='shop-intro';
+    panel.insertBefore(intro, document.querySelector('.cust-section'));
+  }
+  intro.innerHTML=`Tienda del Reino · tienes <strong>🪙 ${G.coins}</strong>. Gana monedas acertando y pierdes <strong>2</strong> al fallar.`;
+
   const sg=document.getElementById('skinGrid');
   sg.innerHTML='';
   SKINS.forEach((sk,i)=>{
+    const unlocked=G.unlockedSkins.includes(i);
+    const active=G.skinIdx===i;
     const el=document.createElement('div');
-    el.className='skin-option'+(G.skinIdx===i?' active':'');
+    el.className='skin-option'+(active?' active':'')+(unlocked?'':' locked');
     const ic=document.createElement('div');ic.className='skin-icon';ic.textContent=sk.hat||'🐊';
-    const lb=document.createElement('span');lb.textContent=sk.name;
-    el.appendChild(ic);el.appendChild(lb);
+    const copy=document.createElement('div');copy.className='skin-copy';
+    const name=document.createElement('span');name.className='skin-name';name.textContent=sk.name;
+    const meta=document.createElement('span');meta.className='skin-meta';meta.textContent=unlocked?(active?'Equipado':'Tocar para equipar'):`${sk.rarity} · bloqueado`;
+    const price=document.createElement('span');price.className='price-badge';price.textContent=unlocked?(active?'✓':'Usar'):`🪙 ${sk.price}`;
+    copy.appendChild(name);copy.appendChild(meta);
+    el.appendChild(ic);el.appendChild(copy);el.appendChild(price);
     el.addEventListener('click',()=>{
-      G.skinIdx=i;
-      document.querySelectorAll('.skin-option').forEach((o,j)=>o.classList.toggle('active',j===i));
-      saveGame();spawnParticles(W*0.5,H*0.5,true);
+      if(unlockSkin(i)) buildCustPanel();
     });
     sg.appendChild(el);
   });
 
   const cg=document.getElementById('colorGrid');
   cg.innerHTML='';
-  COLORS.forEach((c,i)=>{
+  COLORS.forEach((c)=>{
+    const unlocked=G.unlockedColors.includes(c.id);
+    const active=G.colorId===c.id;
     const el=document.createElement('div');
-    el.className='color-swatch'+(G.colorId===c.id?' active':'');
-    el.style.background=c.body;el.title=c.label;
+    el.className='color-swatch'+(active?' active':'')+(unlocked?'':' locked');
+    el.style.background=c.body;el.title=unlocked?c.label:`${c.label} · ${c.price} monedas`;
     el.addEventListener('click',()=>{
-      G.colorId=c.id;
-      document.querySelectorAll('.color-swatch').forEach((o,j)=>o.classList.toggle('active',j===i));
-      saveGame();spawnParticles(W*0.5,H*0.5,true);
+      if(unlockColor(c.id)) buildCustPanel();
     });
     cg.appendChild(el);
   });
@@ -762,12 +831,12 @@ function buildCustPanel(){
 
 document.getElementById('custBtn').addEventListener('click',()=>{
   const open=document.getElementById('custPanel').classList.toggle('open');
-  document.getElementById('custBtn').textContent=open?'✕ CERRAR':'🎨 LOOK';
+  document.getElementById('custBtn').textContent=open?'✕ CERRAR':'🛒 TIENDA';
   if(open) buildCustPanel();
 });
 document.getElementById('closePanel').addEventListener('click',()=>{
   document.getElementById('custPanel').classList.remove('open');
-  document.getElementById('custBtn').textContent='🎨 LOOK';
+  document.getElementById('custBtn').textContent='🛒 TIENDA';
 });
 
 // ══════════════════════════════════════════
@@ -780,7 +849,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='>') answer('>');
   else if(e.key==='<') answer('<');
   else if(e.key==='=') answer('=');
-  else if(e.key==='Escape'){document.getElementById('custPanel').classList.remove('open');document.getElementById('custBtn').textContent='🎨 LOOK';}
+  else if(e.key==='Escape'){document.getElementById('custPanel').classList.remove('open');document.getElementById('custBtn').textContent='🛒 TIENDA';}
 });
 
 // ══════════════════════════════════════════
