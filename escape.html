@@ -866,13 +866,13 @@ const Audio = (() => {
 const CHARACTERS = [
   { id:'chico',  name:'Chico Runer',        rarity:'base',      price:0,   owned:true,  color:'#3498db', emoji:'🧑', bodyColor:'#f5cba7', shirtColor:'#3498db', pantsColor:'#2c3e50' },
   { id:'chica',  name:'Chica Runner',       rarity:'base',      price:0,   owned:true,  color:'#e91e63', emoji:'👩', bodyColor:'#f5cba7', shirtColor:'#e91e63', pantsColor:'#6d4c41' },
-  { id:'finny',  name:'Finny Pies Rápidos', rarity:'common',    price:20,  owned:false, color:'#00bcd4', emoji:'🐟', bodyColor:'#00bcd4', shirtColor:'#0097a7', pantsColor:'#006064' },
-  { id:'tuga',   name:'Tuga Escudo Verde',  rarity:'common',    price:25,  owned:false, color:'#4caf50', emoji:'🐢', bodyColor:'#4caf50', shirtColor:'#388e3c', pantsColor:'#1b5e20' },
-  { id:'nexo',   name:'Nexo Byte',          rarity:'rare',      price:35,  owned:false, color:'#9e9e9e', emoji:'🤖', bodyColor:'#9e9e9e', shirtColor:'#607d8b', pantsColor:'#37474f' },
-  { id:'loti',   name:'Loti Branquias',     rarity:'rare',      price:30,  owned:false, color:'#f48fb1', emoji:'🦎', bodyColor:'#ce93d8', shirtColor:'#9c27b0', pantsColor:'#4a148c' },
-  { id:'drako',  name:'Drako Números',      rarity:'epic',      price:50,  owned:false, color:'#ff5722', emoji:'🐉', bodyColor:'#ff5722', shirtColor:'#d84315', pantsColor:'#bf360c' },
-  { id:'zuri',   name:'Zuri Cola Veloz',    rarity:'epic',      price:45,  owned:false, color:'#ff9800', emoji:'🦊', bodyColor:'#ff9800', shirtColor:'#f57c00', pantsColor:'#e65100' },
-  { id:'ocko',   name:'Ocko Tentáculos',    rarity:'legendary', price:70,  owned:false, color:'#7c4dff', emoji:'🐙', bodyColor:'#7c4dff', shirtColor:'#651fff', pantsColor:'#311b92' },
+  { id:'finny',  name:'Finny Pies Rápidos', rarity:'common',    price:60,  owned:false, color:'#00bcd4', emoji:'🐟', bodyColor:'#00bcd4', shirtColor:'#0097a7', pantsColor:'#006064' },
+  { id:'tuga',   name:'Tuga Escudo Verde',  rarity:'common',    price:320,  owned:false, color:'#4caf50', emoji:'🐢', bodyColor:'#4caf50', shirtColor:'#388e3c', pantsColor:'#1b5e20' },
+  { id:'nexo',   name:'Nexo Byte',          rarity:'rare',      price:110,  owned:false, color:'#9e9e9e', emoji:'🤖', bodyColor:'#9e9e9e', shirtColor:'#607d8b', pantsColor:'#37474f' },
+  { id:'loti',   name:'Loti Branquias',     rarity:'rare',      price:95,  owned:false, color:'#f48fb1', emoji:'🦎', bodyColor:'#ce93d8', shirtColor:'#9c27b0', pantsColor:'#4a148c' },
+  { id:'drako',  name:'Drako Números',      rarity:'epic',      price:600,  owned:false, color:'#ff5722', emoji:'🐉', bodyColor:'#ff5722', shirtColor:'#d84315', pantsColor:'#bf360c' },
+  { id:'zuri',   name:'Zuri Cola Veloz',    rarity:'epic',      price:160,  owned:false, color:'#ff9800', emoji:'🦊', bodyColor:'#ff9800', shirtColor:'#f57c00', pantsColor:'#e65100' },
+  { id:'ocko',   name:'Ocko Tentáculos',    rarity:'legendary', price:320,  owned:false, color:'#7c4dff', emoji:'🐙', bodyColor:'#7c4dff', shirtColor:'#651fff', pantsColor:'#311b92' },
 ];
 
 const WORLDS = [
@@ -889,10 +889,10 @@ const BODY_COLORS = [
   { id:'arena',   name:'Arena',         color:'#DEB887', price:0,  free:true  },
   { id:'canela',  name:'Canela',        color:'#C68642', price:0,  free:true  },
   { id:'bronce',  name:'Bronce',        color:'#8D5524', price:0,  free:true  },
-  { id:'azul_f',  name:'Azul Fantasía', color:'#4169E1', price:12, free:false },
-  { id:'verde_f', name:'Verde Fantasía',color:'#32CD32', price:12, free:false },
-  { id:'morado_f',name:'Morado Fantasía',color:'#8B008B',price:12, free:false },
-  { id:'rojo_f',  name:'Rojo Fantasía', color:'#DC143C', price:12, free:false },
+  { id:'azul_f',  name:'Azul Fantasía', color:'#4169E1', price:40, free:false },
+  { id:'verde_f', name:'Verde Fantasía',color:'#32CD32', price:40, free:false },
+  { id:'morado_f',name:'Morado Fantasía',color:'#8B008B',price:40, free:false },
+  { id:'rojo_f',  name:'Rojo Fantasía', color:'#DC143C', price:40, free:false },
 ];
 
 const SHIRT_COLORS = [
@@ -920,25 +920,25 @@ const FLAGS = [
 ];
 
 const EMBLEMS = [
-  { id:'em_star',   name:'Estrella',  emoji:'⭐', price:18 },
-  { id:'em_flower', name:'Flor',      emoji:'🌸', price:18 },
-  { id:'em_ghost',  name:'Fantasma',  emoji:'👻', price:18 },
-  { id:'em_bomb',   name:'Bomba',     emoji:'💣', price:18 },
-  { id:'em_fire',   name:'Fuego',     emoji:'🔥', price:18 },
-  { id:'em_crown',  name:'Corona',    emoji:'👑', price:18 },
-  { id:'em_shroom', name:'Hongo',     emoji:'🍄', price:18 },
-  { id:'em_shark',  name:'Tiburón',   emoji:'🦈', price:18 },
-  { id:'em_bolt',   name:'Rayo',      emoji:'⚡', price:18 },
-  { id:'em_brain',  name:'Cerebro',   emoji:'🧠', price:18 },
-  { id:'em_chest',  name:'Cofre',     emoji:'💰', price:18 },
-  { id:'em_shield', name:'Escudo',    emoji:'🛡️', price:18 },
+  { id:'em_star',   name:'Estrella',  emoji:'⭐', price:60 },
+  { id:'em_flower', name:'Flor',      emoji:'🌸', price:60 },
+  { id:'em_ghost',  name:'Fantasma',  emoji:'👻', price:60 },
+  { id:'em_bomb',   name:'Bomba',     emoji:'💣', price:60 },
+  { id:'em_fire',   name:'Fuego',     emoji:'🔥', price:60 },
+  { id:'em_crown',  name:'Corona',    emoji:'👑', price:60 },
+  { id:'em_shroom', name:'Hongo',     emoji:'🍄', price:60 },
+  { id:'em_shark',  name:'Tiburón',   emoji:'🦈', price:60 },
+  { id:'em_bolt',   name:'Rayo',      emoji:'⚡', price:60 },
+  { id:'em_brain',  name:'Cerebro',   emoji:'🧠', price:60 },
+  { id:'em_chest',  name:'Cofre',     emoji:'💰', price:60 },
+  { id:'em_shield', name:'Escudo',    emoji:'🛡️', price:60 },
 ];
 
 // ─────────────────────────────────────────────
 //  SAVE / LOAD STATE
 // ─────────────────────────────────────────────
-const SAVE_KEY = 'escapeNumericoStateV7';
-const LEGACY_KEYS = ['escapeNumericoStateV6','escapeNumericoStateV5','escapeNumericoStateV4','escapeNumericoStateV3','escapeNumericoStateV2','game'];
+const SAVE_KEY = 'escapeNumericoStateV11';
+const LEGACY_KEYS = ['escapeNumericoStateV10','escapeNumericoStateV9','escapeNumericoStateV8','escapeNumericoStateV7','escapeNumericoStateV6','escapeNumericoStateV5','escapeNumericoStateV4','escapeNumericoStateV3','escapeNumericoStateV2','game'];
 
 let GS = null; // Game State (loaded below)
 
@@ -1008,22 +1008,21 @@ const SeqEngine = (() => {
 
   function safeDiff(level){
     const configs = [
-      { ops:['+','-'], range:[1,3], mixed:true },          // 1: suma/resta simple con pista
-      { ops:['+','-'], range:[1,5], mixed:true },          // 2: suma/resta simple ampliada
-      { ops:['+','-'], range:[3,7], mixed:true },          // 3: suma/resta media
-      { ops:['+','-'], range:[5,10], mixed:true },         // 4: suma/resta media con más tensión
-      { ops:['+','-'], range:[3,10], alterna:true },       // 5: patrón alternado con pista
-      { ops:['+','-'], range:[5,15], noHint:true },        // 6: descubrir patrón
-      { ops:['+','-'], range:[3,12], alterna:true, noHint:true }, // 7
-      { ops:['+','-'], range:[1,14], expert:true },        // 8
+      { ops:['+','-'], range:[1,3], mixed:true },
+      { ops:['+','-'], range:[1,4], mixed:true },
+      { ops:['+','-'], range:[2,5], mixed:true },
+      { ops:['+','-'], range:[2,6], mixed:true },
+      { ops:['+','-'], range:[2,7], alterna:true },
+      { ops:['+','-'], range:[3,9], noHint:true },
+      { ops:['+','-'], range:[3,10], alterna:true, noHint:true },
+      { ops:['+','-'], range:[4,12], expert:true },
     ];
     return configs[Math.min(level-1,7)];
   }
 
   function chooseOp(cfg){
     let op = cfg.ops[Math.floor(Math.random()*cfg.ops.length)];
-    // Evita que los niveles básicos parezcan solo suma o solo resta muchas veces seguidas.
-    if(cfg.mixed && lastOp && Math.random()<0.62){
+    if(cfg.mixed && lastOp && Math.random()<0.55){
       const other = cfg.ops.find(o=>o!==lastOp);
       if(other) op = other;
     }
@@ -1035,43 +1034,48 @@ const SeqEngine = (() => {
     return op==='+' ? value+step : value-step;
   }
 
+  function buildOps(cfg, count){
+    const op = chooseOp(cfg);
+    if(cfg.alterna){
+      const op2 = op==='+' ? '-' : '+';
+      return Array.from({length:count}, (_,i)=> i%2===0 ? op : op2);
+    }
+    return Array.from({length:count}, ()=> op);
+  }
+
   function generate(level){
     const cfg = safeDiff(level);
     const hasHints = !cfg.noHint && level < 6;
+    const stepsCount = 5; // ahora se necesitan 5 respuestas para llegar a la meta
     let attempts = 0;
-    while(attempts++ < 160){
+    while(attempts++ < 240){
       const step = Math.floor(Math.random()*(cfg.range[1]-cfg.range[0]+1))+cfg.range[0];
-      const op = chooseOp(cfg);
-      let ops = [op, op, op];
-      if(cfg.alterna){
-        const op2 = op==='+' ? '-' : '+';
-        ops = [op, op2, op];
-      }
+      const ops = buildOps(cfg, stepsCount);
 
       let start;
-      if(ops.includes('-') && level<8){
+      if(ops.includes('-') && level < 8){
         const negativeBudget = ops.reduce((sum,o)=> sum + (o==='-'?step:0), 0);
-        start = negativeBudget + Math.floor(Math.random()*12) + 2;
-      } else if(level>=8){
-        start = Math.floor(Math.random()*22)-6;
+        start = negativeBudget + Math.floor(Math.random()*8) + 3;
+      } else if(level >= 8){
+        start = Math.floor(Math.random()*24)-5;
       } else {
-        start = Math.floor(Math.random()*14)+2;
+        start = Math.floor(Math.random()*10)+3;
       }
 
       const seq = [start];
       let valid = true;
-      for(let i=0;i<3;i++){
+      for(let i=0;i<stepsCount;i++){
         const next = applyOp(seq[i], ops[i], step);
         if(level<8 && next<0){ valid=false; break; }
         seq.push(next);
       }
       if(!valid) continue;
 
-      const hidden = [1,2];
-      const label = cfg.alterna ? `${ops[0]}${step}, ${ops[1]}${step}` : `${op}${step}`;
-      return { seq, hidden, op, step, ops, label, hasHints };
+      const hidden = [1,2,3,4,5];
+      const label = cfg.alterna ? `${ops[0]}${step}, ${ops[1]}${step}` : `${ops[0]}${step}`;
+      return { seq, hidden, op:ops[0], step, ops, label, hasHints, stepsCount };
     }
-    return { seq:[8,10,12,14], hidden:[1,2], op:'+', step:2, ops:['+','+','+'], label:'+2', hasHints:true };
+    return { seq:[6,8,10,12,14,16], hidden:[1,2,3,4,5], op:'+', step:2, ops:['+','+','+','+','+'], label:'+2', hasHints:true, stepsCount:5 };
   }
 
   function makeOptions(correctVal, level){
@@ -1147,18 +1151,19 @@ function resizeCanvas(){
   VH = window.innerHeight;
   const dpr = Math.min(window.devicePixelRatio||1, 2);
 
-  const landscapeMobile = Math.min(VW,VH) < 760 && VW > VH;
   const gameAreaW = VW;
   const gameAreaH = VH;
-
-  // V10: experiencia principal horizontal. En landscape usamos contain completo.
-  // En portrait no forzamos cover: mostramos gate de giro para evitar UI aplastada.
-  SCALE = Math.min(gameAreaW/BASE_W, gameAreaH/BASE_H);
+  if(isPortraitMobile()){
+    // V11: en celular vertical usamos cover parcial para que el mundo llene el ancho y no se vea miniatura.
+    SCALE = Math.max(gameAreaW/BASE_W, (gameAreaH*0.58)/BASE_H);
+  } else {
+    SCALE = Math.min(gameAreaW/BASE_W, gameAreaH/BASE_H);
+  }
 
   const drawW = BASE_W * SCALE;
   const drawH = BASE_H * SCALE;
   VIEW_OFFSET_X = Math.round((gameAreaW - drawW) * 0.5);
-  VIEW_OFFSET_Y = Math.round((gameAreaH - drawH) * 0.5);
+  VIEW_OFFSET_Y = isPortraitMobile() ? 0 : Math.round((gameAreaH - drawH) * 0.5);
 
   canvas.width  = Math.round(VW * dpr);
   canvas.height = Math.round(VH * dpr);
@@ -1278,10 +1283,9 @@ function rewardJumpOnActiveNode(){
   if(scene.nodeJumpRewards[key]) return;
   if(Math.abs(scene.player.x-anchorX) <= 64){
     scene.nodeJumpRewards[key]=true;
-    GS.coins += 1;
-    GS.monsterProgress = Math.max(0, GS.monsterProgress - 0.025);
+    GS.monsterProgress = Math.max(0, GS.monsterProgress - 0.02);
     Audio.coin();
-    addFloatText(scene.player.x+18, scene.player.y-138, '⤴ número +1🪙', '#FFD700', 18);
+    addFloatText(scene.player.x+18, scene.player.y-138, '⭐ salto preciso', '#FFE66D', 18);
     spawnParticles(scene.player.x, scene.player.y-90, true);
     updateHUD(); saveState();
   }
@@ -1298,7 +1302,7 @@ function startGame(){
   scene.totalSegments = GS.totalSegments||5;
   scene.camX = 0;
   scene.camTargetX = 0;
-  scene.player.x = BASE_W*0.50;
+  scene.player.x = BASE_W*0.46;
   scene.player.y = scene.groundY-50;
   scene.player.vy = 0;
   scene.player.jumping = false;
@@ -1332,11 +1336,11 @@ function generateSegment(){
   const seqData = SeqEngine.generate(GS.level);
   scene.seq = seqData;
   scene.currentHiddenIdx = 0;
-  scene.nodeAnswered = [false,false,false,false];
+  scene.nodeAnswered = seqData.seq.map(()=>false);
   scene.waitingAnswer = true;
-  // place nodes along x
-  const startX = scene.camX + BASE_W*0.35;
-  const spacing = 220;
+  // place nodes along x. En V11 hay 5 respuestas por meta, así que compactamos mejor el tramo.
+  const startX = scene.camX + BASE_W*0.30;
+  const spacing = 176;
   scene.nodePositions = seqData.seq.map((_,i)=>startX+i*spacing);
   // show answer buttons for first hidden node
   showAnswerFor(seqData.hidden[0]);
@@ -1377,21 +1381,17 @@ function handleAnswer(btnIdx){
     GS.streak++;
     GS.totalCorrect++;
     const streakTier = Math.min(5, 1 + Math.floor(GS.streak/5));
-    const reward = 5 + Math.min(4, Math.floor(GS.streak/5));
-    GS.coins += reward;
     if(GS.streak>0 && GS.streak % 5 === 0){
-      const comboBonus = 10 + streakTier*2;
-      GS.coins += comboBonus;
       scene.cameraKick = 24;
       scene.impactShake = 5;
-      showToast(`🔥 Racha x${streakTier}! +${comboBonus} 🪙`, 'coin');
+      showToast(`🔥 Racha x${streakTier}!`, 'coin');
       spawnStreakBurst();
       Audio.coin();
     } else {
       scene.cameraKick = 13;
     }
     scene.nodeAnswered[hiddenIdx] = true;
-    addFloatText(scene.nodePositions[hiddenIdx]-(scene.camX), BASE_H*0.45, `+${reward}🪙`, '#FFD700', 28);
+    addFloatText(scene.nodePositions[hiddenIdx]-(scene.camX), BASE_H*0.45, `✔ bien`, '#2ecc71', 28);
     spawnParticles(scene.nodePositions[hiddenIdx]-(scene.camX), BASE_H*0.5, true);
     // advance player
     scene.player.jumping = true;
@@ -1422,8 +1422,8 @@ function handleAnswer(btnIdx){
     // WRONG
     btn.classList.add('wrong');
     Audio.wrong();
-    GS.coins = Math.max(0, GS.coins-2); GS.streak=0; GS.errors++;
-    addFloatText(BASE_W/2, BASE_H*0.4, '-2🪙  Era '+correctVal, '#e74c3c', 24);
+    GS.streak=0; GS.errors++;
+    addFloatText(BASE_W/2, BASE_H*0.4, 'Era '+correctVal, '#e74c3c', 24);
     scene.impactShake = Math.max(scene.impactShake||0, 9);
     shakeScreen();
     // monster advances
@@ -1439,10 +1439,13 @@ function handleAnswer(btnIdx){
 }
 
 function onSegmentComplete(){
-  GS.coins += 2; GS.segmentsCompleted++;
+  const metaReward = 5 + Math.min(7, GS.level*2);
+  GS.coins += metaReward;
+  GS.segmentsCompleted++;
   scene.currentSegment++;
   Audio.levelComplete();
-  addFloatText(BASE_W/2, BASE_H*0.35, '✅ Tramo completo! +2🪙', '#2ecc71', 26);
+  addFloatText(BASE_W/2, BASE_H*0.35, `🏁 ¡Meta alcanzada! +${metaReward}🪙`, '#2ecc71', 26);
+  showToast(`🏁 Meta alcanzada: +${metaReward} monedas`, 'coin');
   updateSegmentBar();
   updateHUD();
   saveState();
@@ -1456,15 +1459,13 @@ function onSegmentComplete(){
 }
 
 function onRunComplete(){
-  const bonus = 20;
-  GS.coins += bonus; GS.runsCompleted++;
+  const bonus = 0;
+  GS.runsCompleted++;
   Audio.runComplete();
   // Check level up
   if(GS.runsCompleted % 3 === 0 && GS.level < 8){
     GS.level++;
-    GS.coins += 25;
     Audio.worldUnlock();
-    // Unlock world
     const nextWorld = WORLDS.find(w=>w.level===GS.level+1);
     if(nextWorld && !GS.unlockedWorlds.includes(nextWorld.id)){
       GS.unlockedWorlds.push(nextWorld.id);
@@ -1472,7 +1473,7 @@ function onRunComplete(){
     }
   }
   document.getElementById('levelCompleteBonus').innerHTML =
-    `+${bonus} 🪙 monedas de bonus!<br>Total: ${GS.coins} 🪙`;
+    `Corrida completada.<br>Total: ${GS.coins} 🪙`;
   saveState();
   showScreen('levelComplete');
 }
@@ -1482,40 +1483,30 @@ function onRunComplete(){
 //  ACTION RUNNER SYSTEM — juego real integrado
 // ─────────────────────────────────────────────
 function generateActionCourse(){
-  // Crea elementos jugables entre los nodos: monedas, obstáculos, bloques y portal.
-  const start = scene.camX + BASE_W*0.30;
-  const end   = start + 980;
+  // V11: limpiamos el exceso de monedas. La recompensa real llega al alcanzar la meta.
+  const start = (scene.nodePositions?.[0] || scene.camX + BASE_W*0.30) - 80;
+  const end   = (scene.nodePositions?.[scene.nodePositions.length-1] || start + 900) + 170;
   const gy    = scene.groundY;
   scene.actionItems = [];
   let id = 0;
 
-  // Monedas en arco para invitar al salto.
-  for(let i=0;i<9;i++){
-    const arc = Math.sin(i/8*Math.PI);
+  // Bloques ligeros solo para lectura visual del mundo.
+  for(let i=0;i<2;i++){
     scene.actionItems.push({
-      id:'coin_'+(id++), type:'coin', x:start+95+i*70, y:gy-95-arc*72,
-      r:15, taken:false, vx:0, value:1, phase:Math.random()*Math.PI*2
-    });
-  }
-
-  // Bloques golpeables con recompensa.
-  for(let i=0;i<3;i++){
-    scene.actionItems.push({
-      id:'block_'+(id++), type:i===1?'numblock':'mystery', x:start+210+i*230, y:gy-245,
+      id:'block_'+(id++), type:i===0?'numblock':'mystery', x:start+250+i*320, y:gy-235,
       w:58, h:48, hit:false, bump:0, phase:Math.random()*Math.PI*2
     });
   }
 
-  // Obstáculos suaves y esquivables. Se retiraron los pinchos por frustración injusta.
+  // Obstáculos suaves y esquivables.
   const obstacleKinds = ['slime','stump'];
   for(let i=0;i<2;i++){
     scene.actionItems.push({
       id:'hazard_'+(id++), type:'hazard', kind:obstacleKinds[(i+GS.level)%obstacleKinds.length],
-      x:start+460+i*320, y:gy-52, w:52, h:56, hit:false, phase:Math.random()*Math.PI*2
+      x:start+360+i*320, y:gy-52, w:52, h:56, hit:false, phase:Math.random()*Math.PI*2
     });
   }
 
-  // Portal / meta visual del tramo.
   scene.actionItems.push({id:'portal_'+(id++), type:'portal', x:end, y:gy-100, w:72, h:120, phase:0});
 }
 
@@ -1553,25 +1544,7 @@ function addLandingDust(x,y){
 }
 
 function collectNearbyJumpCoins(){
-  if(!scene.actionItems) return;
-  const p=scene.player;
-  let collected=0;
-  scene.actionItems.forEach(item=>{
-    if(item.type!=='coin' || item.taken) return;
-    const sx=item.x-scene.camX;
-    const dx=Math.abs(sx-p.x);
-    const dy=Math.abs(item.y-(p.y-82));
-    if(dx<92 && dy<120){
-      item.taken=true; collected++;
-      GS.coins += item.value || 1;
-      spawnParticles(sx,item.y,true);
-    }
-  });
-  if(collected>0){
-    Audio.coin();
-    addFloatText(p.x+42,p.y-136,`+${collected}🪙 salto`, '#FFD700', 19);
-    updateHUD(); saveState();
-  }
+  // V11: ya no regalamos monedas repartidas por el escenario.
 }
 
 function updateActionGameplay(dt){
@@ -1628,13 +1601,9 @@ function updateActionGameplay(dt){
       if(withinX && hitFromBelow){
         item.hit = true;
         item.bump = 18;
-        const reward = item.type==='numblock' ? 4 : 3;
-        GS.coins += reward;
         Audio.coin();
-        addFloatText(sx+item.w/2, item.y-20, '+'+reward+'🪙', '#FFD700', 20);
+        addFloatText(sx+item.w/2, item.y-20, '¡BAM!', '#FFE66D', 20);
         spawnParticles(sx+item.w/2,item.y,true);
-        updateHUD();
-        saveState();
       }
     }
 
@@ -1669,7 +1638,7 @@ function updateActionGameplay(dt){
   // El monstruo solo gana cuando realmente se superpone al personaje.
   const monsterSX = getMonsterScreenX();
   const monsterFrontX = monsterSX + (scene.monster ? scene.monster.size*42 : 42);
-  const touchedPlayer = monsterFrontX >= (p.x - 18);
+  const touchedPlayer = monsterFrontX >= (p.x - 8);
   if(touchedPlayer && !monsterStunned && now-scene.lastCaptureAt>2600){
     scene.lastCaptureAt = now;
     scene.monsterStunUntil = now + 3400;
@@ -1677,7 +1646,7 @@ function updateActionGameplay(dt){
     scene.cameraKick = 22;
     scene.impactShake = 20;
     GS.monsterProgress = 0.18;
-    GS.coins = Math.max(0, GS.coins-5);
+    GS.coins = Math.max(0, GS.coins-8);
     GS.streak = 0;
     p.scared = true;
     setTimeout(()=>p.scared=false,650);
@@ -1692,7 +1661,7 @@ function updateActionGameplay(dt){
     Audio.wrong();
     shakeScreen();
     spawnParticles(p.x, p.y-35, false);
-    addFloatText(p.x+10, p.y-120, '👻 ¡ATRAPADO! -5🪙', '#ff6b6b', 30);
+    addFloatText(p.x+10, p.y-120, '👻 ¡ATRAPADO! -8🪙', '#ff6b6b', 30);
     addFloatText(Math.max(80,monsterSX+80), p.y-160, '💫 confundido...', '#ffe66d', 20);
     showToast('👻 ¡Atrapado! El monstruo se queda confundido. Tienes respiro.', 'error');
     updateHUD();
@@ -1919,6 +1888,7 @@ function drawGame(){
   // ── SEQUENCE NODES
   if(scene.state==='game' && scene.seq){
     drawMathSignpost();
+    drawCountingAid();
     drawSequenceNodes();
     drawCheckpointGate();
   }
@@ -2375,7 +2345,7 @@ function drawPlayer(){
   const t  = scene.t;
 
   ctx.save();
-  const visualScale = 1.16;
+  const visualScale = 1.24;
   ctx.translate(px, py);
   ctx.scale(visualScale, visualScale);
   ctx.translate(-px, -py);
@@ -3004,7 +2974,7 @@ function drawRetroForegroundProps(){
 function drawMathSignpost(){
   const x = BASE_W*0.08;
   const y = scene.groundY-158;
-  const label = scene.seq?.hasHints ? (scene.seq.label || `${scene.seq.op}${scene.seq.step}`) : 'DESCUBRE';
+  const label = scene.seq?.hasHints ? 'Cuenta y avanza' : 'Descubre';
   ctx.save();
   ctx.strokeStyle='rgba(0,0,0,.45)'; ctx.lineWidth=5;
   ctx.beginPath(); ctx.moveTo(x+28,y+55); ctx.lineTo(x+28,y+124); ctx.stroke();
@@ -3017,6 +2987,77 @@ function drawMathSignpost(){
   ctx.fillText('Pista del tramo',x+88,y+23);
   ctx.font='bold 24px Fredoka One, cursive';
   ctx.fillText(label,x+88,y+50);
+  ctx.restore();
+}
+
+
+function starPath(ctx,x,y,r){
+  ctx.beginPath();
+  for(let i=0;i<10;i++){
+    const ang = -Math.PI/2 + i*Math.PI/5;
+    const rr = i%2===0 ? r : r*0.45;
+    const px = x + Math.cos(ang)*rr;
+    const py = y + Math.sin(ang)*rr;
+    if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+  }
+  ctx.closePath();
+}
+function drawAidStars(x,y,count,color,muted=0){
+  const maxPerRow = 10;
+  const gap = 18;
+  for(let i=0;i<count;i++){
+    const row = Math.floor(i/maxPerRow);
+    const col = i%maxPerRow;
+    const sx = x + col*gap;
+    const sy = y + row*22;
+    const isMuted = i >= count - muted;
+    ctx.save();
+    ctx.fillStyle = isMuted ? 'rgba(255,120,120,.55)' : color;
+    ctx.strokeStyle = isMuted ? 'rgba(90,20,20,.75)' : 'rgba(80,55,0,.8)';
+    ctx.lineWidth = 2;
+    starPath(ctx,sx,sy,8.5); ctx.fill(); ctx.stroke();
+    if(isMuted){
+      ctx.strokeStyle='rgba(90,20,20,.9)'; ctx.lineWidth=2.5;
+      ctx.beginPath(); ctx.moveTo(sx-8,sy-8); ctx.lineTo(sx+8,sy+8); ctx.stroke();
+    }
+    ctx.restore();
+  }
+}
+function drawCountingAid(){
+  if(!scene.seq || !scene.waitingAnswer) return;
+  const hiddenIdx = getActiveHiddenIndex();
+  if(hiddenIdx <= 0) return;
+  const baseVal = scene.seq.seq[hiddenIdx-1];
+  const step = scene.seq.step || 1;
+  const op = scene.seq.ops?.[hiddenIdx-1] || scene.seq.op || '+';
+  if(baseVal > 20 || step > 12) return; // evita saturar con números altos
+
+  const panelW = 470;
+  const panelH = 102;
+  const x = BASE_W*0.34;
+  const y = 118;
+  ctx.save();
+  ctx.fillStyle='rgba(38,48,67,.82)';
+  roundRect2(ctx,x,y,panelW,panelH,22); ctx.fill();
+  ctx.lineWidth=4; ctx.strokeStyle='rgba(255,215,0,.30)';
+  roundRect2(ctx,x,y,panelW,panelH,22); ctx.stroke();
+  ctx.fillStyle='#fff7d8';
+  ctx.font='bold 15px Fredoka One, cursive'; ctx.textAlign='left'; ctx.textBaseline='middle';
+  ctx.fillText(op==='+' ? 'Cuenta con estrellas: suma' : 'Cuenta con estrellas: resta', x+18, y+18);
+  ctx.font='bold 22px Fredoka One, cursive';
+  ctx.fillStyle='#fff';
+  ctx.fillText(`${baseVal} ${op} ${step} = ?`, x+18, y+43);
+
+  if(op === '+'){
+    drawAidStars(x+24, y+72, baseVal, '#FFD84D', 0);
+    ctx.font='bold 24px Fredoka One, cursive'; ctx.fillStyle='#00E5FF'; ctx.textAlign='center';
+    ctx.fillText('+', x+210, y+70);
+    drawAidStars(x+235, y+72, step, '#7EE7FF', 0);
+  } else {
+    drawAidStars(x+24, y+72, baseVal, '#FFD84D', step);
+    ctx.font='bold 22px Fredoka One, cursive'; ctx.fillStyle='#FF8A80'; ctx.textAlign='left';
+    ctx.fillText(`tacha ${step}`, x+260, y+70);
+  }
   ctx.restore();
 }
 
@@ -3223,19 +3264,25 @@ function gameLoop(ts){
     const stunned = isMonsterStunned();
     const anchorIndex = getPlayerAnchorNodeIndex();
     const anchorWorldX = scene.nodePositions?.[anchorIndex] || (scene.camX + p.x);
-    let desiredGap = 650 - GS.monsterProgress*330; // deja ventaja real visible
+    let desiredGap = 520 - GS.monsterProgress*430; // en V11 sí puede cerrar la distancia hasta atrapar.
     let monsterEase = 0.010;
     if(scene.monsterMood==='espera'){ desiredGap = 720; monsterEase = 0.000; }
-    else if(scene.monsterMood==='siguiendo'){ monsterEase = 0.008; }
-    else if(scene.monsterMood==='acecho'){ monsterEase = 0.012; }
-    else if(scene.monsterMood==='peligro'){ monsterEase = 0.015; desiredGap -= 35; }
-    else if(scene.monsterMood==='sprint'){ monsterEase = 0.030; desiredGap -= 75; }
+    else if(scene.monsterMood==='siguiendo'){ monsterEase = 0.010; }
+    else if(scene.monsterMood==='acecho'){ monsterEase = 0.014; desiredGap -= 40; }
+    else if(scene.monsterMood==='peligro'){ monsterEase = 0.020; desiredGap -= 95; }
+    else if(scene.monsterMood==='sprint'){ monsterEase = 0.045; desiredGap -= 170; }
     else if(scene.monsterMood==='confundido'){ monsterEase = 0.006; desiredGap = 720; }
+    desiredGap = Math.max(18, desiredGap);
     const desiredMonsterWorldX = anchorWorldX - desiredGap;
     if(stunned){
       scene.monsterX += ((anchorWorldX-720)-scene.monsterX)*monsterEase;
-    } else if(now >= (scene.monsterIntroUntil||0) && desiredMonsterWorldX > scene.monsterX){
-      scene.monsterX += (desiredMonsterWorldX-scene.monsterX)*monsterEase;
+    } else if(now >= (scene.monsterIntroUntil||0)){
+      if(desiredMonsterWorldX > scene.monsterX){
+        scene.monsterX += (desiredMonsterWorldX-scene.monsterX)*monsterEase;
+      }
+      if(GS.monsterProgress > 0.96){
+        scene.monsterX = Math.max(scene.monsterX, anchorWorldX - 28);
+      }
     }
 
     if(scene.captureFX>0) scene.captureFX -= 1;
@@ -3562,7 +3609,7 @@ function installInlineManifest(){
   try{
     const manifest={
       name:'Escape Numérico', short_name:'Escape', start_url:'.', display:'fullscreen',
-      orientation:'landscape-primary', background_color:'#050716', theme_color:'#6B4EFF',
+      orientation:'any', background_color:'#050716', theme_color:'#6B4EFF',
       icons:[]
     };
     const blob=new Blob([JSON.stringify(manifest)],{type:'application/manifest+json'});
@@ -3579,22 +3626,16 @@ function isMobilePortrait(){
 function updateOrientationGate(){
   const gate=document.getElementById('orientationGate');
   if(!gate) return;
-  const blocked=isMobilePortrait();
-  scene.orientationBlocked=blocked;
-  gate.classList.toggle('show', blocked);
+  // V11: en celular permitimos vertical; ocultamos la compuerta de orientación.
+  scene.orientationBlocked=false;
+  gate.classList.remove('show');
 }
 
 async function requestLandscapeMode(){
   try{
-    if(document.documentElement.requestFullscreen && !document.fullscreenElement && Math.min(window.innerWidth,window.innerHeight)<760){
-      await document.documentElement.requestFullscreen();
-    }
-    if(screen.orientation && screen.orientation.lock){
-      await screen.orientation.lock('landscape-primary');
-    }
-  }catch(e){
-    showToast('📱 Gira el celular a horizontal para jugar mejor.', 'info');
-  }finally{
+    // V11: no forzamos landscape. En celular el juego se adapta a vertical.
+  }catch(e){}
+  finally{
     setTimeout(()=>{ resizeCanvas(); updateOrientationGate(); },250);
   }
 }
