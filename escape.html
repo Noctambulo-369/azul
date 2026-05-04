@@ -363,7 +363,7 @@ body::before{
 
 
 
-/* ─── V3: Portrait mobile gate ─── */
+/* ─── V10: Landscape mobile gate ─── */
 #orientationGate{
   position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;
   background:radial-gradient(circle at 50% 18%,rgba(107,78,255,.35),transparent 38%),linear-gradient(180deg,#050716,#0b0d2b 55%,#050716);
@@ -380,8 +380,8 @@ body::before{
 @keyframes phoneTilt{from{transform:rotate(-8deg) scale(1)}to{transform:rotate(8deg) scale(1.05)}}
 .orientation-title{font-family:var(--font-game);font-size:clamp(13px,4vw,18px);line-height:1.45;color:var(--gold);text-shadow:0 0 18px rgba(255,215,0,.35);}
 .orientation-copy{font-family:var(--font-body);font-size:14px;line-height:1.45;color:rgba(255,255,255,.72);margin:14px 0 18px;}
-#btnForcePortrait{font-family:var(--font-ui);font-size:15px;border:0;border-radius:16px;padding:12px 18px;background:linear-gradient(135deg,#ffd700,#ff9f1a);color:#181100;font-weight:900;box-shadow:0 6px 0 #9b6100;}
-#btnForcePortrait:active{transform:translateY(3px);box-shadow:0 3px 0 #9b6100;}
+#btnForceLandscape{font-family:var(--font-ui);font-size:15px;border:0;border-radius:16px;padding:12px 18px;background:linear-gradient(135deg,#ffd700,#ff9f1a);color:#181100;font-weight:900;box-shadow:0 6px 0 #9b6100;}
+#btnForceLandscape:active{transform:translateY(3px);box-shadow:0 3px 0 #9b6100;}
 
 /* ─── V3: Combo/progreso más potente ─── */
 #comboHud{
@@ -520,6 +520,84 @@ body::before{
 .world-card.selected .world-status{background:rgba(255,215,0,.88);color:#241600;}
 .world-card.locked .world-status{background:rgba(0,0,0,.35);color:rgba(255,255,255,.55);}
 
+
+
+/* ─── V10: Tienda landscape tipo consola ─── */
+#shopScreen{
+  display:grid;
+  grid-template-rows:auto 1fr;
+  grid-template-columns:190px minmax(0,1fr);
+  grid-template-areas:
+    "header header"
+    "tabs content";
+  min-height:100vh;
+  overflow:hidden;
+}
+#shopHeader{grid-area:header;min-height:70px;padding:12px 20px;}
+#shopTabs{
+  grid-area:tabs;
+  flex-direction:column;
+  align-items:stretch;
+  gap:12px;
+  padding:18px 14px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.shop-tab{
+  width:100%;
+  min-height:56px;
+  border-radius:18px;
+  justify-content:flex-start;
+  text-align:left;
+  font-size:14px;
+  padding:12px 14px;
+  box-shadow:0 5px 0 rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.10);
+}
+#shopContent{
+  grid-area:content;
+  padding:18px 22px 24px;
+  overflow-y:auto;
+  justify-content:stretch;
+  align-items:stretch;
+}
+#shopGrid{
+  width:100%;
+  max-width:none;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(172px,1fr));
+  gap:16px;
+  align-content:start;
+}
+.shop-item{
+  min-height:190px;
+  border-radius:20px;
+  padding:14px 12px;
+  background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+  box-shadow:0 10px 24px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.11);
+}
+.shop-item-preview{width:82px;height:82px;border-radius:18px;font-size:38px;}
+.shop-item-name{font-size:13px;line-height:1.18;min-height:30px;display:flex;align-items:center;justify-content:center;}
+.shop-action-btn,.shop-item-price{margin-top:auto;}
+@media (orientation:landscape) and (max-height:560px){
+  #shopScreen{grid-template-columns:170px minmax(0,1fr);} 
+  #shopHeader{min-height:58px;padding:8px 16px;}
+  #shopTabs{padding:12px 10px;gap:8px;}
+  .shop-tab{min-height:44px;font-size:12px;border-radius:14px;padding:8px 10px;}
+  #shopContent{padding:12px 14px 16px;}
+  #shopGrid{grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;}
+  .shop-item{min-height:150px;padding:10px 8px;border-radius:16px;}
+  .shop-item-preview{width:58px;height:58px;font-size:30px;}
+  .shop-item-name{font-size:11px;min-height:24px;}
+}
+@media (max-width:760px) and (orientation:portrait){
+  #shopScreen{grid-template-columns:1fr;grid-template-areas:"header" "tabs" "content";}
+  #shopTabs{flex-direction:row;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid rgba(255,255,255,.12);}
+  .shop-tab{width:auto;min-width:max-content;min-height:44px;text-align:center;}
+  #shopGrid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+
 </style>
 </head>
 <body>
@@ -581,13 +659,13 @@ body::before{
 <!-- TOAST ZONE -->
 <div id="toastZone"></div>
 
-<!-- MOBILE PORTRAIT GATE -->
+<!-- MOBILE LANDSCAPE GATE -->
 <div id="orientationGate" aria-live="polite">
   <div class="orientation-card">
-    <div class="orientation-icon">📱↕️</div>
-    <div class="orientation-title">Juega en vertical</div>
-    <div class="orientation-copy">Escape Numérico está optimizado para celular en modo vertical. Gira el dispositivo o activa el bloqueo cuando el navegador lo permita.</div>
-    <button id="btnForcePortrait">Forzar vertical</button>
+    <div class="orientation-icon">📱↔️</div>
+    <div class="orientation-title">Juega en horizontal</div>
+    <div class="orientation-copy">Escape Numérico está optimizado como runner lateral. Gira el celular a horizontal para ver mejor el monstruo, el escenario y los números.</div>
+    <button id="btnForceLandscape">Forzar horizontal</button>
   </div>
 </div>
 
@@ -1058,7 +1136,10 @@ let VW=0, VH=0, SCALE=1;
 let VIEW_OFFSET_X = 0, VIEW_OFFSET_Y = 0;
 
 function isPortraitMobile(){
-  return VW <= 700 && VH > VW;
+  return VW <= 760 && VH > VW;
+}
+function isLandscapeMobile(){
+  return Math.min(VW,VH) < 760 && VW > VH;
 }
 
 function resizeCanvas(){
@@ -1066,31 +1147,25 @@ function resizeCanvas(){
   VH = window.innerHeight;
   const dpr = Math.min(window.devicePixelRatio||1, 2);
 
-  const portraitMobile = VW <= 700 && VH > VW;
-  const reservedBottom = portraitMobile ? Math.min(340, VH*0.40) : 0;
+  const landscapeMobile = Math.min(VW,VH) < 760 && VW > VH;
   const gameAreaW = VW;
-  const gameAreaH = Math.max(260, VH - reservedBottom);
+  const gameAreaH = VH;
 
-  // En portrait usamos cover dentro del área jugable para evitar la franja negra enorme.
-  // En landscape mantenemos contain para ver toda la escena cómodamente.
-  SCALE = portraitMobile
-    ? Math.max(gameAreaW/BASE_W, gameAreaH/BASE_H)
-    : Math.min(gameAreaW/BASE_W, gameAreaH/BASE_H);
+  // V10: experiencia principal horizontal. En landscape usamos contain completo.
+  // En portrait no forzamos cover: mostramos gate de giro para evitar UI aplastada.
+  SCALE = Math.min(gameAreaW/BASE_W, gameAreaH/BASE_H);
 
   const drawW = BASE_W * SCALE;
   const drawH = BASE_H * SCALE;
   VIEW_OFFSET_X = Math.round((gameAreaW - drawW) * 0.5);
-  VIEW_OFFSET_Y = 0;
+  VIEW_OFFSET_Y = Math.round((gameAreaH - drawH) * 0.5);
 
   canvas.width  = Math.round(VW * dpr);
   canvas.height = Math.round(VH * dpr);
   canvas.style.width  = VW+'px';
   canvas.style.height = VH+'px';
   ctx.setTransform(dpr*SCALE, 0, 0, dpr*SCALE, dpr*VIEW_OFFSET_X, dpr*VIEW_OFFSET_Y);
-}window.addEventListener('resize', ()=>{ resizeCanvas(); });
-resizeCanvas();
-
-// ─────────────────────────────────────────────
+}// ─────────────────────────────────────────────
 //  GAME SCENE STATE
 // ─────────────────────────────────────────────
 let scene = {
@@ -3481,13 +3556,13 @@ function rarityLabel(r){
 }
 
 // ─────────────────────────────────────────────
-//  MOBILE PORTRAIT EXPERIENCE — PWA + fallback visual
+//  MOBILE LANDSCAPE EXPERIENCE — PWA + fallback visual
 // ─────────────────────────────────────────────
 function installInlineManifest(){
   try{
     const manifest={
       name:'Escape Numérico', short_name:'Escape', start_url:'.', display:'fullscreen',
-      orientation:'portrait-primary', background_color:'#050716', theme_color:'#6B4EFF',
+      orientation:'landscape-primary', background_color:'#050716', theme_color:'#6B4EFF',
       icons:[]
     };
     const blob=new Blob([JSON.stringify(manifest)],{type:'application/manifest+json'});
@@ -3497,40 +3572,40 @@ function installInlineManifest(){
   }catch(e){}
 }
 
-function isMobileLandscape(){
-  return Math.min(window.innerWidth,window.innerHeight) < 760 && window.innerWidth > window.innerHeight;
+function isMobilePortrait(){
+  return Math.min(window.innerWidth,window.innerHeight) < 760 && window.innerHeight > window.innerWidth;
 }
 
 function updateOrientationGate(){
   const gate=document.getElementById('orientationGate');
   if(!gate) return;
-  const blocked=isMobileLandscape();
+  const blocked=isMobilePortrait();
   scene.orientationBlocked=blocked;
   gate.classList.toggle('show', blocked);
 }
 
-async function requestPortraitMode(){
+async function requestLandscapeMode(){
   try{
     if(document.documentElement.requestFullscreen && !document.fullscreenElement && Math.min(window.innerWidth,window.innerHeight)<760){
       await document.documentElement.requestFullscreen();
     }
     if(screen.orientation && screen.orientation.lock){
-      await screen.orientation.lock('portrait-primary');
+      await screen.orientation.lock('landscape-primary');
     }
   }catch(e){
-    showToast('📱 En este navegador, gira el celular a vertical.', 'info');
+    showToast('📱 Gira el celular a horizontal para jugar mejor.', 'info');
   }finally{
-    setTimeout(updateOrientationGate,250);
+    setTimeout(()=>{ resizeCanvas(); updateOrientationGate(); },250);
   }
 }
 
-function setupPortraitExperience(){
+function setupLandscapeExperience(){
   installInlineManifest();
   updateOrientationGate();
-  window.addEventListener('resize', updateOrientationGate);
-  window.addEventListener('orientationchange', ()=>setTimeout(updateOrientationGate,250));
-  const btn=document.getElementById('btnForcePortrait');
-  if(btn) btn.addEventListener('click',()=>{ Audio.click(); requestPortraitMode(); });
+  window.addEventListener('resize', ()=>{ resizeCanvas(); updateOrientationGate(); });
+  window.addEventListener('orientationchange', ()=>setTimeout(()=>{ resizeCanvas(); updateOrientationGate(); },250));
+  const btn=document.getElementById('btnForceLandscape');
+  if(btn) btn.addEventListener('click',()=>{ Audio.click(); requestLandscapeMode(); });
 }
 
 // ─────────────────────────────────────────────
@@ -3542,7 +3617,7 @@ for(let i=0;i<4;i++){
 }
 
 // Title
-document.getElementById('btnPlay').addEventListener('click',()=>{ Audio.click(); requestPortraitMode(); if(GS.musicOn) Audio.startMusic(); startGame(); });
+document.getElementById('btnPlay').addEventListener('click',()=>{ Audio.click(); requestLandscapeMode(); if(GS.musicOn) Audio.startMusic(); startGame(); });
 document.getElementById('btnTitleShop').addEventListener('click',()=>{ Audio.click(); scene.prevState='title'; showScreen('shop'); });
 document.getElementById('btnTitleMap').addEventListener('click',()=>{ Audio.click(); scene.prevState='title'; renderWorldMap(); showScreen('map'); });
 
@@ -3604,7 +3679,7 @@ document.addEventListener('keydown',e=>{
 // ─────────────────────────────────────────────
 GS = loadState();
 generateBGElements();
-setupPortraitExperience();
+setupLandscapeExperience();
 updateHUD();
 showScreen('title');
 requestAnimationFrame(gameLoop);
